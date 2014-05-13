@@ -1,0 +1,281 @@
+#
+#  Copyright (C) 1989-95 GROUPE BULL
+#
+#  Permission is hereby granted, free of charge, to any person obtaining a copy
+#  of this software and associated documentation files (the "Software"), to
+#  deal in the Software without restriction, including without limitation the
+#  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+#  sell copies of the Software, and to permit persons to whom the Software is
+#  furnished to do so, subject to the following conditions:
+#
+#  The above copyright notice and this permission notice shall be included in
+#  all copies or substantial portions of the Software.
+#
+#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+#  GROUPE BULL BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+#  AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+#  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+#  Except as contained in this notice, the name of GROUPE BULL shall not be
+#  used in advertising or otherwise to promote the sale, use or other dealings
+#  in this Software without prior written authorization from GROUPE BULL.
+#
+
+#
+# XPM Makefile - Arnaud LE HORS
+#
+
+VER=4.2.0
+MAJVER=4
+
+prefix=/usr
+incpath=$(prefix)/include/noX
+incxpath=$(incpath)/X11
+libpath=$(prefix)/lib/noX
+binpath=$(prefix)/bin
+manpath=$(prefix)/share/man
+man1path=$(manpath)/man1
+
+# if your system doesn't provide strcasecmp add -DNEED_STRCASECMP
+# if your system doesn't provide strdup add -DNEED_STRDUP
+# if your system doesn't provide pipe add -DNO_ZPIPE
+# if on your system sprintf doesn't return the number of bytes transmitted
+# add -DVOID_SPRINTF
+DEFINES =
+DEFINESNOX = -DXPM_NO_X
+DEFINESX =
+
+CC = gcc
+AR = ar rc 
+RANLIB = ranlib
+RM = rm -f
+# on sysV, define this as cp.
+INSTALL = install -c
+MKDIRHIER = mkdir -p
+LN = ln -s
+
+CDEBUGFLAGS= -O
+
+INCLUDES=
+INCLUDESNOX= 
+INCLUDESX=-I/usr/X11R6/include
+
+LIBSX=-L/usr/X11R6/lib -lXext -lXt -lICE -lSM -lX11
+
+OBJSX_NAMES = data.o create.o misc.o rgb.o scan.o parse.o hashtab.o \
+      WrFFrP.o RdFToP.o CrPFrDat.o CrDatFrP.o \
+      WrFFrI.o RdFToI.o CrIFrDat.o CrDatFrI.o \
+      CrIFrBuf.o CrPFrBuf.o CrBufFrI.o CrBufFrP.o \
+      RdFToDat.o WrFFrDat.o \
+      Attrib.o CrIFrP.o CrPFrI.o Image.o Info.o RdFToBuf.o WrFFrBuf.o
+OBJSXDLL_NAMES = ${OBJSX_NAMES:.o=.pic.o}
+OBJSX = ${OBJSX_NAMES:%.o=.lib/%.o}
+OBJSXDLL = ${OBJSX:.o=.pic.o}
+
+OBJS = data.o create.o misc.o rgb.o scan.o parse.o hashtab.o \
+      WrFFrI.o RdFToI.o CrIFrDat.o CrDatFrI.o \
+      CrIFrBuf.o CrBufFrI.o \
+      RdFToDat.o WrFFrDat.o \
+      Attrib.o Image.o Info.o RdFToBuf.o WrFFrBuf.o simx.o
+OBJSDLL= ${OBJS:.o=.pic.o}
+
+SHAREDLIBNOX=cygXpm-noX${MAJVER}.dll
+STATLIBNOX=libXpm.a
+IMPLIBNOX=libXpm.dll.a
+SHAREDDEFNOX=libXpm-noX.def
+
+SHAREDLIBX=cygXpm-X${MAJVER}.dll
+STATLIBX=libXpm-X.a
+IMPLIBX=libXpm-X.dll.a
+SHAREDDEFX=libXpm-X.def
+
+LIBS=$(SHAREDLIBNOX) $(STATLIBNOX) $(SHAREDLIBX) $(STATLIBX)
+
+EXE=.exe
+LDSHARED=gcc -shared -Wl,--export-all
+LDEXTRANOX=-Wl,--out-implib=$(IMPLIBNOX) # $(SHAREDDEFNOX)
+LDEXTRAX=-Wl,--out-implib=$(IMPLIBX) # $(SHAREDDEFX)
+
+CFLAGS= $(CDEBUGFLAGS) $(DEFINES) $(INCLUDES)
+CFLAGSX= $(CFLAGS) $(DEFINESX) $(INCLUDESX) 
+CFLAGSNOX= $(CFLAGS) $(DEFINESNOX) $(INCLUDESNOX) 
+
+.SUFFIXES:	.c .o .pic.o
+
+.lib/%.o : %.c
+	$(CC) -c $(CFLAGSX) -o $@ $<
+
+%.o : %.c
+	$(CC) -c $(CFLAGSNOX) -o $@ $<
+
+%.pic.o : %.c
+	$(CC) -c $(CFLAGSNOX) -o $@ $<
+
+.lib/%.pic.o : %.c
+	$(CC) -c $(CFLAGSX) -o $@ $<
+
+all: ../X11/xpm.h $(LIBS) $(STATLIBNOX) $(IMPLIBNOX) $(STATLIBX) $(IMPLIBX)
+
+clean: 
+	-@$(RM) *.o $(STATLIBNOX) $(IMPLIBNOX) $(SHAREDLIBNOX) \
+		$(STATLIBX) $(IMPLIBX) $(SHAREDLIBX) \
+		$(STATLIB_BASE) $(IMPLIB_BASE)
+	-@$(RM) .lib/*
+	-@rmdir .lib
+	-@$(RM) ../X11/*
+	-@rmdir ../X11
+
+.lib:
+	-@if [ ! -d .lib ]; then mkdir .lib; fi   
+
+$(STATLIBNOX): $(OBJS)
+	$(AR) $(STATLIBNOX) $(OBJS)
+	$(RANLIB) $@
+
+$(STATLIBX): .lib $(OBJSX)
+	(cd .lib ;\
+	$(AR) $(STATLIBX) $(OBJSX_NAMES) ; \
+	cp $(STATLIBX) .. )
+	$(RANLIB) $@
+
+$(SHAREDLIBNOX): $(OBJSDLL) $(SHAREDDEFNOX)
+	$(LDSHARED) -o $(SHAREDLIBNOX) $(LDEXTRANOX) $(OBJSDLL) -lgdi32 -luser32
+
+$(SHAREDLIBX): .lib $(OBJSXDLL) $(SHAREDDEFX)
+	(cd .lib ;\
+	cp ../$(SHAREDDEFX) . ; \
+	$(LDSHARED) -o $(SHAREDLIBX) $(LDEXTRAX) $(OBJSXDLL_NAMES) $(LIBSX) ; \
+	cp $(SHAREDLIBX) .. ; \
+	cp $(IMPLIBX) .. )
+
+install: $(STATLIBNOX) $(SHAREDLIBNOX) $(SHAREDLIBX)
+	-@if [ ! -d $(incpath) ]; then mkdir -p $(incpath); fi   
+	-@if [ ! -d $(incxpath) ]; then mkdir -p $(incxpath); fi   
+	-@if [ ! -d $(binpath) ]; then mkdir -p $(binpath); fi   
+	-@if [ ! -d $(libpath) ]; then mkdir -p $(libpath); fi   
+	$(INSTALL) -m 0644 $(STATLIBNOX) $(libpath)
+	$(INSTALL) -m 0644 $(IMPLIBNOX) $(libpath)
+	$(INSTALL) -m 0644 $(STATLIBX) $(libpath)
+	$(INSTALL) -m 0644 $(IMPLIBX) $(libpath)
+	$(INSTALL) -m 0644 xpm.h $(incxpath)
+	$(INSTALL) -m 0644 simx.h $(incxpath)
+	(cd $(incpath); $(LN) X11/xpm.h xpm.h)
+	(cd $(incpath); $(LN) X11/simx.h simx.h)
+	$(INSTALL) -s -m 0755 $(SHAREDLIBNOX) $(binpath)
+	$(INSTALL) -s -m 0755 $(SHAREDLIBX) $(binpath)
+
+../X11/xpm.h: xpm.h simx.h
+	@if [ -d ../X11 ]; then set +x; \
+	else (set -x; $(MKDIRHIER) ../X11); fi
+	$(RM) ../X11/xpm.h; \
+	$(RM) ../X11/simx.h; \
+	cp ../lib/xpm.h ../X11; \
+	cp ../lib/simx.h ../X11
+
+# Other dependencies.
+CrBufFrI.o:  XpmI.h xpm.h
+CrDatFI.o:  XpmI.h xpm.h
+CrIFrBuf.o:  XpmI.h xpm.h
+CrIFrDat.o:  XpmI.h xpm.h
+RdFToDat.o:  XpmI.h xpm.h
+RdFToI.o:  XpmI.h xpm.h
+WrFFrDat.o:  XpmI.h xpm.h
+WrFFrI.o:  XpmI.h xpm.h
+create.o:  XpmI.h xpm.h
+data.o:  XpmI.h xpm.h
+hashtab.o:  XpmI.h xpm.h
+misc.o:  XpmI.h xpm.h
+parse.o:  XpmI.h xpm.h
+rgb.o:  XpmI.h xpm.h
+scan.o:  XpmI.h xpm.h
+Attrib.o:  XpmI.h xpm.h
+Image.o:  XpmI.h xpm.h
+Info.o:  XpmI.h xpm.h
+RdFToBuf.o:  XpmI.h xpm.h
+WrFFrBuf.o:  XpmI.h xpm.h
+simx.o:  XpmI.h xpm.h
+
+CrBufFrI.pic.o:  XpmI.h xpm.h
+CrDatFI.pic.o:  XpmI.h xpm.h
+CrIFrBuf.pic.o:  XpmI.h xpm.h
+CrIFrDat.pic.o:  XpmI.h xpm.h
+RdFToDat.pic.o:  XpmI.h xpm.h
+RdFToI.pic.o:  XpmI.h xpm.h
+WrFFrDat.pic.o:  XpmI.h xpm.h
+WrFFrI.pic.o:  XpmI.h xpm.h
+create.pic.o:  XpmI.h xpm.h
+data.pic.o:  XpmI.h xpm.h
+hashtab.pic.o:  XpmI.h xpm.h
+misc.pic.o:  XpmI.h xpm.h
+parse.pic.o:  XpmI.h xpm.h
+rgb.pic.o:  XpmI.h xpm.h
+scan.pic.o:  XpmI.h xpm.h
+Attrib.pic.o:  XpmI.h xpm.h
+Image.pic.o:  XpmI.h xpm.h
+Info.pic.o:  XpmI.h xpm.h
+RdFToBuf.pic.o:  XpmI.h xpm.h
+WrFFrBuf.pic.o:  XpmI.h xpm.h
+simx.pic.o:  XpmI.h xpm.h
+
+.lib/CrBufFrI.pic.o:  XpmI.h xpm.h
+.lib/CrBufFrP.pic.o:  XpmI.h xpm.h
+.lib/CrDatFI.pic.o:  XpmI.h xpm.h
+.lib/CrDatFP.pic.o:  XpmI.h xpm.h
+.lib/CrIFrBuf.pic.o:  XpmI.h xpm.h
+.lib/CrIFrDat.pic.o:  XpmI.h xpm.h
+.lib/CrPFrBuf.pic.o:  XpmI.h xpm.h
+.lib/CrPFrDat.pic.o:  XpmI.h xpm.h
+.lib/RdFToDat.pic.o:  XpmI.h xpm.h
+.lib/RdFToI.pic.o:  XpmI.h xpm.h
+.lib/RdFToP.pic.o:  XpmI.h xpm.h
+.lib/WrFFrDat.pic.o:  XpmI.h xpm.h
+.lib/WrFFrI.pic.o:  XpmI.h xpm.h
+.lib/WrFFrP.pic.o:  XpmI.h xpm.h
+.lib/create.pic.o:  XpmI.h xpm.h
+.lib/data.pic.o:  XpmI.h xpm.h
+.lib/hashtab.pic.o:  XpmI.h xpm.h
+.lib/misc.pic.o:  XpmI.h xpm.h
+.lib/parse.pic.o:  XpmI.h xpm.h
+.lib/rgb.pic.o:  XpmI.h xpm.h
+.lib/scan.pic.o:  XpmI.h xpm.h
+.lib/Attrib.pic.o:  XpmI.h xpm.h
+.lib/CrIFrP.pic.o:  XpmI.h xpm.h
+.lib/CrPFrI.pic.o:  XpmI.h xpm.h
+.lib/Image.pic.o:  XpmI.h xpm.h
+.lib/Info.pic.o:  XpmI.h xpm.h
+.lib/RdFToBuf.pic.o:  XpmI.h xpm.h
+.lib/WrFFrBuf.pic.o:  XpmI.h xpm.h
+
+
+.lib/CrBufFrI.o:  XpmI.h xpm.h
+.lib/CrBufFrP.o:  XpmI.h xpm.h
+.lib/CrDatFI.o:  XpmI.h xpm.h
+.lib/CrDatFP.o:  XpmI.h xpm.h
+.lib/CrIFrBuf.o:  XpmI.h xpm.h
+.lib/CrIFrDat.o:  XpmI.h xpm.h
+.lib/CrPFrBuf.o:  XpmI.h xpm.h
+.lib/CrPFrDat.o:  XpmI.h xpm.h
+.lib/RdFToDat.o:  XpmI.h xpm.h
+.lib/RdFToI.o:  XpmI.h xpm.h
+.lib/RdFToP.o:  XpmI.h xpm.h
+.lib/WrFFrDat.o:  XpmI.h xpm.h
+.lib/WrFFrI.o:  XpmI.h xpm.h
+.lib/WrFFrP.o:  XpmI.h xpm.h
+.lib/create.o:  XpmI.h xpm.h
+.lib/data.o:  XpmI.h xpm.h
+.lib/hashtab.o:  XpmI.h xpm.h
+.lib/misc.o:  XpmI.h xpm.h
+.lib/parse.o:  XpmI.h xpm.h
+.lib/rgb.o:  XpmI.h xpm.h
+.lib/scan.o:  XpmI.h xpm.h
+.lib/Attrib.o:  XpmI.h xpm.h
+.lib/CrIFrP.o:  XpmI.h xpm.h
+.lib/CrPFrI.o:  XpmI.h xpm.h
+.lib/Image.o:  XpmI.h xpm.h
+.lib/Info.o:  XpmI.h xpm.h
+.lib/RdFToBuf.o:  XpmI.h xpm.h
+.lib/WrFFrBuf.o:  XpmI.h xpm.h
+
+

@@ -1,0 +1,8 @@
+first_rule: all
+
+all allbin alldoc:
+	-mkdir -p W11/lib
+	cd xpm/lib; make -f Makefile.noX CC=gcc INCLUDES=-I../../W11 DESTLIBDIR=../../W11/lib DESTINCLUDEDIR=../../W11/X11 all install
+
+tags clean:
+	cd xpm/lib; make -f Makefile.noX $@

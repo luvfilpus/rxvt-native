@@ -1,0 +1,44 @@
+#!/bin/sh
+
+#
+# fake libtoolize
+#
+acdir=`aclocal --print-ac-dir`
+cp $acdir/libtool.m4     autoconf/
+cp $acdir/ltoptions.m4   autoconf/
+cp $acdir/ltsugar.m4     autoconf/
+cp $acdir/ltversion.m4   autoconf/
+cp $acdir/lt~obsolete.m4 autoconf/
+acdirparent=`dirname $acdir`
+cp $acdirparent/libtool/config/ltmain.sh autoconf/
+
+#
+# run autoheader
+#
+newah=0
+autoheader --version | grep -q autoheader && newah=1
+
+if test $newah = 1; then
+  cmd="autoheader --include=autoconf autoconf/configure.in"
+else
+  cmd="autoheader --localdir=autoconf autoconf/configure.in > autoconf/config.h.in"
+fi
+echo $cmd
+eval $cmd
+chmod 644 autoconf/config.h.in
+
+
+#
+# run autoconf
+#
+newac=0
+autoconf --version | grep -q autoconf && newac=1
+
+if test $newac = 1; then
+  cmd="autoconf --include=autoconf autoconf/configure.in > configure"
+else
+  cmd="autoconf --localdir=autoconf autoconf/configure.in > configure"
+fi
+echo $cmd
+eval $cmd
+chmod 755 configure

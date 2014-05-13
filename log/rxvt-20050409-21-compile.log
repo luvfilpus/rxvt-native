@@ -1,0 +1,489 @@
+cygport 0.15.0 
+
+PF = rxvt-20050409-21
+S = /usr/src/rxvt-20050409-21/src/rxvt
+B = /usr/src/rxvt-20050409-21/build
+D = /usr/src/rxvt-20050409-21/inst
+C = /usr/src/rxvt-20050409-21/src/rxvt/CYGWIN-PATCHES
+T = /usr/src/rxvt-20050409-21/temp
+CBUILD = x86_64-pc-cygwin
+CHOST = x86_64-pc-cygwin
+CTARGET = x86_64-pc-cygwin
+CC = gcc
+CFLAGS = -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21
+CPPFLAGS =
+CXX = g++
+CXXFLAGS = -ggdb -O2 -pipe -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21
+F77 = gfortran
+FFLAGS = -ggdb -O2 -pipe -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21
+FC = gfortran
+FCFLAGS = -ggdb -O2 -pipe -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21
+GCJ = gcj
+GCJFLAGS = -ggdb -O2 -pipe -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21
+GOC = gccgo
+GOFLAGS = -ggdb -O2 -pipe -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21
+OBJC = gcc
+OBJCFLAGS = -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21
+OBJCXX = g++
+OBJCXXFLAGS = -ggdb -O2 -pipe -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21
+LDFLAGS =
+LIBS =
+MAKEOPTS = -j3
+
+
+autoheader --include=autoconf autoconf/configure.in
+autoconf --include=autoconf autoconf/configure.in > configure
+/usr/src/rxvt-20050409-21/src/rxvt/configure --srcdir=/usr/src/rxvt-20050409-21/src/rxvt --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --libexecdir=/usr/libexec --datadir=/usr/share --localstatedir=/var --sysconfdir=/etc --libdir=/usr/lib --datarootdir=/usr/share --docdir=/usr/share/doc/rxvt --htmldir=/usr/share/doc/rxvt/html -C --disable-shared --enable-xpm-background --with-xpm-includes=/usr/src/rxvt-20050409-21/build/W11/X11 --with-xpm-library=/usr/src/rxvt-20050409-21/build/W11/lib --x-libraries=/usr/src/rxvt-20050409-21/build/W11/lib --x-includes=/usr/src/rxvt-20050409-21/build/W11 --enable-utmp --enable-wtmp --enable-lastlog --enable-menubar --enable-rxvt-scroll --enable-next-scroll --enable-xterm-scroll --enable-frills --enable-linespace --enable-mousewheel --enable-keepscrolling --enable-old-selection --enable-selectionscrolling --enable-transparency --enable-256-color --enable-24bit --enable-languages --with-encoding=noenc
+configure: loading cache config.cache
+
+configuring for rxvt 2.7.10 (20050409, 21)
+
+checking build system type... x86_64-unknown-cygwin
+checking host system type... x86_64-unknown-cygwin
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.exe
+checking for suffix of executables... .exe
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking how to run the C preprocessor... gcc -E
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for gawk... gawk
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking minix/config.h usability... no
+checking minix/config.h presence... no
+checking for minix/config.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking for library containing strerror... none required
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 8192
+checking whether the shell understands some XSI constructs... yes
+checking whether the shell understands "+="... yes
+checking how to convert x86_64-unknown-cygwin file names to x86_64-unknown-cygwin format... func_convert_file_noop
+checking how to convert x86_64-unknown-cygwin file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... file_magic ^x86 archive import|^x86 DLL
+checking for dlltool... dlltool
+checking how to associate runtime and link libraries... func_cygming_dll_for_implib
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for dlfcn.h... yes
+checking for as... as
+checking for dlltool... (cached) dlltool
+checking for objdump... (cached) objdump
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -DDLL_EXPORT -DPIC
+checking if gcc PIC flag -DDLL_EXPORT -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... Win32 ld.exe
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking for windres... windres
+checking for mv... /usr/bin/mv
+checking for rm... /usr/bin/rm
+checking for cp... /usr/bin/cp
+checking for ln... /usr/bin/ln
+checking for sed... (cached) /usr/bin/sed
+checking for echo... /usr/bin/echo
+checking for cmp... /usr/bin/cmp
+checking for tbl... /usr/bin/tbl
+checking for X... libraries /usr/src/rxvt-20050409-21/build/W11/lib, headers /usr/src/rxvt-20050409-21/build/W11
+checking whether -R must be followed by a space... neither works
+checking for gethostbyname... yes
+checking for connect... yes
+checking for remove... yes
+checking for shmat... yes
+checking for IceConnectionNumber in -lICE... yes
+checking for libXpm... -I/usr/src/rxvt-20050409-21/build/W11/X11, -L/usr/src/rxvt-20050409-21/build/W11/lib
+checking for sys/wait.h that is POSIX.1 compatible... yes
+checking assert.h usability... yes
+checking assert.h presence... yes
+checking for assert.h... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking grp.h usability... yes
+checking grp.h presence... yes
+checking for grp.h... yes
+checking libc.h usability... no
+checking libc.h presence... no
+checking for libc.h... no
+checking lastlog.h usability... yes
+checking lastlog.h presence... yes
+checking for lastlog.h... yes
+checking stdarg.h usability... yes
+checking stdarg.h presence... yes
+checking for stdarg.h... yes
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking termios.h usability... yes
+checking termios.h presence... yes
+checking for termios.h... yes
+checking for unistd.h... (cached) yes
+checking sys/byteorder.h usability... no
+checking sys/byteorder.h presence... no
+checking for sys/byteorder.h... no
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking sys/select.h usability... yes
+checking sys/select.h presence... yes
+checking for sys/select.h... yes
+checking sys/sockio.h usability... no
+checking sys/sockio.h presence... no
+checking for sys/sockio.h... no
+checking sys/strredir.h usability... no
+checking sys/strredir.h presence... no
+checking for sys/strredir.h... no
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking utmp.h usability... yes
+checking utmp.h presence... yes
+checking for utmp.h... yes
+checking utmpx.h usability... yes
+checking utmpx.h presence... yes
+checking for utmpx.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking whether termios.h and sys/ioctl.h may both be included... yes
+checking for -rpath dynamic library path recording... yes
+checking for XPointer... yes
+checking for an ANSI C-conforming const... yes
+checking for inline... inline
+checking for mode_t... yes
+checking for pid_t... yes
+checking for uid_t in sys/types.h... yes
+checking size of char... 1
+checking size of short... 2
+checking size of int... 4
+checking size of long... 8
+checking size of long long... 8
+checking size of int *... 8
+checking for int16_t... yes
+checking for u_int16_t... yes
+checking for int32_t... yes
+checking for u_int32_t... yes
+checking for int64_t... yes
+checking for u_int64_t... yes
+checking return type of signal handlers... void
+checking for atexit... yes
+checking for revoke... yes
+checking for unsetenv... yes
+checking for setutent... yes
+checking for seteuid... yes
+checking for setreuid... yes
+checking for setsid... yes
+checking for setpgrp... yes
+checking for setpgid... yes
+checking for openpty... yes
+checking for _getpty... no
+checking for grantpt... yes
+checking for unlockpt... yes
+checking for isastream... no
+checking for on_exit... yes
+checking for nanosleep... yes
+checking for updwtmp... yes
+checking for ttyslot... yes
+checking for utmp.h... (cached) yes
+checking for struct utmp... yes
+checking for ut_host in utmp struct... yes
+checking for ut_pid in utmp struct... yes
+checking for utmpx.h... (cached) yes
+checking for struct utmpx... (cached) no
+checking for host in utmpx struct... yes
+checking for struct lastlog... yes
+checking for struct lastlogx... no
+checking where utmp is located... /var/run/utmp
+checking where utmpx is located... /var/run/utmp
+checking where wtmp is located... /var/log/wtmp
+checking where wtmpx is located... 
+checking where lastlog is located... /var/log/lastlog
+checking where lastlogx is located... 
+checking where ttys/ttytab is located... 
+checking for working Xlocale... no
+checking for working X setlocale... no
+checking for working plain setlocale... yes
+checking for working nl_langinfo... yes
+checking for getpt... yes
+checking for pty/tty type... OPENPTY
+configure: checking for pty ranges...
+checking for setlocale in -lxpg4... no
+checking whether cygwin_conv_path is declared... yes
+configure: updating cache config.cache
+configure: creating ./config.status
+config.status: creating autoconf/Make.common
+config.status: WARNING:  'autoconf/Make.common.in' seems to ignore the --datarootdir setting
+config.status: creating Makefile
+config.status: creating doc/Makefile
+config.status: creating src/Makefile
+config.status: creating src/graphics/Makefile
+config.status: creating src/test/Makefile
+config.status: creating src/rxvtlib.h
+config.status: creating rclock/Makefile
+config.status: creating rclock/rconf/Makefile
+config.status: creating W11/Makefile
+config.status: creating W11/wrap/rxvt.rc
+config.status: creating config.h
+config.status: executing libtool commands
+/usr/bin/rm: cannot remove `libtoolT': No such file or directory
+Configuration:
+
+  Rxvt version:               2.7.10 : 26 MARCH 2003
+  Source code location:       /usr/src/rxvt-20050409-21/src/rxvt
+  Install path:               /usr/bin
+  Compiler:                   gcc
+  Compiler flags:             -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21
+  malloc support:             system default
+  Xpm library:                -L/usr/src/rxvt-20050409-21/build/W11/lib -Wl,-rpath -Wl,/usr/src/rxvt-20050409-21/build/W11/lib -lXpm
+
+The following are set in config.h
+
+  multichar glyph languages:  yes
+  pty/tty type:               OPENPTY
+  utmp support:               enabled
+  utmp file:                  /var/run/utmp
+  utmpx file:                 /var/run/utmp
+  wtmp file:                  /var/log/wtmp
+  wtmpx file:                 
+  lastlog file:               /var/log/lastlog
+  ttys/ttytab file:           
+
+  *** Please check src/feature.h for further options ***
+
+make[1]: Entering directory '/usr/src/rxvt-20050409-21/build/W11'
+mkdir lib
+cd wrap; make all
+make[2]: Entering directory '/usr/src/rxvt-20050409-21/build/W11/wrap'
+perl mkproxy.pl ../X11/Xlib.h > xwrappers.gen
+gcc -O -c wrap.c -I..
+wrap.c: In function ‘_register_window_class’:
+wrap.c:92:17: warning: assignment from incompatible pointer type [enabled by default]
+  wc.lpfnWndProc = WndProc;
+                 ^
+windres -i rxvt.rc -o rxvt_res.o
+ar r ../lib/libX11.a wrap.o rxvt_res.o
+ar: creating ../lib/libX11.a
+make[2]: Leaving directory '/usr/src/rxvt-20050409-21/build/W11/wrap'
+cd w32; make all
+make[2]: Entering directory '/usr/src/rxvt-20050409-21/build/W11/w32'
+gcc -c xlib.c -O -I..
+gcc -c ntutil.c -O -I..
+In file included from /usr/include/w32api/windows.h:72:0,
+                 from ntdef.h:5,
+                 from ntutil.c:1:
+ntutil.c: In function ‘NT_create_window’:
+ntutil.c:284:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  return CreateWindow((LPCTSTR)MAKELONG(atom,0),title,style,x,y,w,h,
+                      ^
+gcc -c event.c -O -I..
+gcc -c dllmain.c -O -I..
+gcc -shared -mwindows -Wl,--export-all-symbols -Wl,--enable-auto-image-base -o ../lib/libW11.dll xlib.o ntutil.o event.o dllmain.o
+make[2]: Leaving directory '/usr/src/rxvt-20050409-21/build/W11/w32'
+make[1]: Leaving directory '/usr/src/rxvt-20050409-21/build/W11'
+make[1]: Entering directory '/usr/src/rxvt-20050409-21/build'
+mkdir W11/lib
+mkdir: cannot create directory `W11/lib': File exists
+Makefile.xpm:4: recipe for target 'all' failed
+make[1]: [all] Error 1 (ignored)
+cd xpm/lib; make -f Makefile.noX CC=gcc INCLUDES=-I../../W11 DESTLIBDIR=../../W11/lib DESTINCLUDEDIR=../../W11/X11 all install
+make[2]: Entering directory '/usr/src/rxvt-20050409-21/build/xpm/lib'
++ mkdir ../X11
+rm -f ../X11/xpm.h; \
+ln -s ../lib/xpm.h ../X11
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o data.o data.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o create.o create.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o misc.o misc.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o rgb.o rgb.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o scan.o scan.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o parse.o parse.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o hashtab.o hashtab.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o WrFFrP.o WrFFrP.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o RdFToP.o RdFToP.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o CrPFrDat.o CrPFrDat.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o CrDatFrP.o CrDatFrP.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o WrFFrI.o WrFFrI.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o RdFToI.o RdFToI.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o CrIFrDat.o CrIFrDat.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o CrDatFrI.o CrDatFrI.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o CrIFrBuf.o CrIFrBuf.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o CrPFrBuf.o CrPFrBuf.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o CrBufFrI.o CrBufFrI.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o CrBufFrP.o CrBufFrP.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o RdFToDat.o RdFToDat.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o WrFFrDat.o WrFFrDat.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o Attrib.o Attrib.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o CrIFrP.o CrIFrP.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o CrPFrI.o CrPFrI.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o Image.o Image.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o Info.o Info.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o RdFToBuf.o RdFToBuf.c
+gcc -O  -I../../W11 -DHAVE_LIBXPM  -c -o WrFFrBuf.o WrFFrBuf.c
+ar r libXpm.a data.o create.o misc.o rgb.o scan.o parse.o hashtab.o WrFFrP.o RdFToP.o CrPFrDat.o CrDatFrP.o WrFFrI.o RdFToI.o CrIFrDat.o CrDatFrI.o CrIFrBuf.o CrPFrBuf.o CrBufFrI.o CrBufFrP.o RdFToDat.o WrFFrDat.o Attrib.o CrIFrP.o CrPFrI.o Image.o Info.o RdFToBuf.o WrFFrBuf.o
+ar: creating libXpm.a
+ranlib libXpm.a
+install -c -m 0664 libXpm.a ../../W11/lib
+cd ../../W11/lib; ranlib libXpm.a
+mkdir ../../W11/X11
+mkdir: cannot create directory `../../W11/X11': File exists
+Makefile.noX:72: recipe for target 'install' failed
+make[2]: [install] Error 1 (ignored)
+chmod ugo+rx ../../W11/X11
+install -c -m 0444 xpm.h ../../W11/X11
+make[2]: Leaving directory '/usr/src/rxvt-20050409-21/build/xpm/lib'
+make[1]: Leaving directory '/usr/src/rxvt-20050409-21/build'
+make[1]: Entering directory '/usr/src/rxvt-20050409-21/build/src'
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk command.c > command.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk defaultfont.c > defaultfont.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk graphics.c > graphics.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk grkelot.c > grkelot.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk init.c > init.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk logging.c > logging.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk main.c > main.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk menubar.c > menubar.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk misc.c > misc.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk netdisp.c > netdisp.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk ptytty.c > ptytty.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk screen.c > screen.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk scrollbar.c > scrollbar.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk scrollbar-rxvt.c > scrollbar-rxvt.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk scrollbar-next.c > scrollbar-next.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk scrollbar-xterm.c > scrollbar-xterm.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk strings.c > strings.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk xdefaults.c > xdefaults.extpro
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeextprotos-awk xpm.c > xpm.extpro
+date >.protos
+gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c rxvt.c
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk command.c > command.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c command.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c command.c -o command.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk defaultfont.c > defaultfont.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c defaultfont.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c defaultfont.c -o defaultfont.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk init.c > init.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c init.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c init.c -o init.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk graphics.c > graphics.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c graphics.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c graphics.c -o graphics.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk grkelot.c > grkelot.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c grkelot.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c grkelot.c -o grkelot.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk logging.c > logging.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c logging.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c logging.c -o logging.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk main.c > main.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c main.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c main.c -o main.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk menubar.c > menubar.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c menubar.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c menubar.c -o menubar.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk misc.c > misc.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c misc.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c misc.c -o misc.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk netdisp.c > netdisp.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c netdisp.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c netdisp.c -o netdisp.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk ptytty.c > ptytty.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c ptytty.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c ptytty.c -o ptytty.o
+ptytty.c: In function 'rxvt_get_pty':
+ptytty.c:77:5: warning: implicit declaration of function 'openpty' [-Wimplicit-function-declaration]
+     if (openpty(&pfd, fd_tty, tty_name, NULL, NULL) != -1) {
+     ^
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk screen.c > screen.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c screen.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c screen.c -o screen.o
+screen.c: In function 'rxvt_selection_property':
+screen.c:2820:6: warning: implicit declaration of function 'XDeleteProperty' [-Wimplicit-function-declaration]
+      XDeleteProperty(r->Xdisplay, win, prop);
+      ^
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk scrollbar.c > scrollbar.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c scrollbar.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c scrollbar.c -o scrollbar.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk scrollbar-next.c > scrollbar-next.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c scrollbar-next.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c scrollbar-next.c -o scrollbar-next.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk scrollbar-rxvt.c > scrollbar-rxvt.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c scrollbar-rxvt.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c scrollbar-rxvt.c -o scrollbar-rxvt.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk scrollbar-xterm.c > scrollbar-xterm.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c scrollbar-xterm.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c scrollbar-xterm.c -o scrollbar-xterm.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk strings.c > strings.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c strings.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c strings.c -o strings.o
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk xdefaults.c > xdefaults.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c xdefaults.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c xdefaults.c -o xdefaults.o
+xdefaults.c: In function 'rxvt_define_key':
+xdefaults.c:654:5: warning: passing argument 1 of 'XrmQuarkToString' makes pointer from integer without a cast [enabled by default]
+     rxvt_parse_keysym(r, XrmQuarkToString(quarks[last]), (char *)value->addr);
+     ^
+In file included from /usr/src/rxvt-20050409-21/build/W11/X11/Intrinsic.h:1:0,
+                 from rxvtlib.h:46,
+                 from rxvt.h:8,
+                 from xdefaults.c:31:
+/usr/src/rxvt-20050409-21/build/W11/X11/xlib.h:2140:1: note: expected 'void *' but argument is of type 'int'
+ XrmQuarkToString(void *quark);
+ ^
+gawk -f /usr/src/rxvt-20050409-21/src/rxvt/src/makeintprotos-awk xpm.c > xpm.intpro
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c xpm.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c xpm.c -o xpm.o
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H  -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21  -DDEBUG_STRICT   -I/usr/src/rxvt-20050409-21/build/W11/X11  -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c rxvt.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -DHAVE_LIBXPM -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 -DDEBUG_STRICT -I/usr/src/rxvt-20050409-21/build/W11/X11 -I/usr/src/rxvt-20050409-21/build/W11 -I.. -I/usr/src/rxvt-20050409-21/src/rxvt/src -I. -c rxvt.c -o rxvt.o
+/bin/sh ../libtool --mode=link gcc -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21   -rpath /usr/lib -version-info 1:0:0 command.lo defaultfont.lo init.lo graphics.lo grkelot.lo logging.lo main.lo menubar.lo misc.lo netdisp.lo ptytty.lo screen.lo scrollbar.lo scrollbar-next.lo scrollbar-rxvt.lo scrollbar-xterm.lo strings.lo xdefaults.lo xpm.lo rxvt.lo  -o librxvt.la
+libtool: link: warning: undefined symbols not allowed in x86_64-unknown-cygwin shared libraries
+libtool: link: ar cru .libs/librxvt.a  command.o defaultfont.o init.o graphics.o grkelot.o logging.o main.o menubar.o misc.o netdisp.o ptytty.o screen.o scrollbar.o scrollbar-next.o scrollbar-rxvt.o scrollbar-xterm.o strings.o xdefaults.o xpm.o rxvt.o
+libtool: link: ranlib .libs/librxvt.a
+libtool: link: ( cd ".libs" && rm -f "librxvt.la" && ln -s "../librxvt.la" "librxvt.la" )
+/bin/sh ../libtool --mode=link gcc -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21   rxvt.o librxvt.la  /usr/src/rxvt-20050409-21/build/W11/lib/libXpm.a /usr/src/rxvt-20050409-21/build/W11/lib/libX11.a /usr/src/rxvt-20050409-21/build/W11/wrap/rxvt_res.o -o rxvt.exe
+libtool: link: gcc -ggdb -O2 -pipe -Wimplicit-function-declaration -fdebug-prefix-map=/usr/src/rxvt-20050409-21/build=/usr/src/debug/rxvt-20050409-21 -fdebug-prefix-map=/usr/src/rxvt-20050409-21/src/rxvt=/usr/src/debug/rxvt-20050409-21 rxvt.o /usr/src/rxvt-20050409-21/build/W11/wrap/rxvt_res.o -o rxvt.exe  ./.libs/librxvt.a /usr/src/rxvt-20050409-21/build/W11/lib/libXpm.a /usr/src/rxvt-20050409-21/build/W11/lib/libX11.a
+./.libs/librxvt.a(screen.o): In function `rxvt_selection_property':
+/usr/src/debug/rxvt-20050409-21/src/screen.c:2820: undefined reference to `XDeleteProperty'
+/usr/src/debug/rxvt-20050409-21/src/screen.c:2820:(.text+0x5916): relocation truncated to fit: R_X86_64_PC32 against undefined symbol `XDeleteProperty'
+/usr/src/rxvt-20050409-21/build/W11/lib/libX11.a(wrap.o):wrap.c:(.text+0x487): undefined reference to `cygwin_conv_to_full_win32_path'
+/usr/src/rxvt-20050409-21/build/W11/lib/libX11.a(wrap.o):wrap.c:(.text+0x487): relocation truncated to fit: R_X86_64_PC32 against undefined symbol `cygwin_conv_to_full_win32_path'
+/usr/bin/ld: /usr/src/rxvt-20050409-21/build/W11/lib/libX11.a(wrap.o): bad reloc address 0x0 in section `.pdata'
+/usr/bin/ld: final link failed: Invalid operation
+collect2: error: ld returned 1 exit status
+Makefile:181: recipe for target 'rxvt.exe' failed
+make[1]: *** [rxvt.exe] Error 1
+make[1]: Leaving directory '/usr/src/rxvt-20050409-21/build/src'
+Makefile:103: recipe for target 'all' failed
+make: *** [all] Error 1
+[1;31m*** ERROR:[0;0m make failed

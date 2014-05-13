@@ -1,0 +1,95 @@
+#
+#  Copyright (C) 1998 Arnaud LE HORS
+#
+#  Permission is hereby granted, free of charge, to any person obtaining a copy
+#  of this software and associated documentation files (the "Software"), to
+#  deal in the Software without restriction, including without limitation the
+#  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+#  sell copies of the Software, and to permit persons to whom the Software is
+#  furnished to do so, subject to the following conditions:
+#
+#  The above copyright notice and this permission notice shall be included in
+#  all copies or substantial portions of the Software.
+#
+#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+#  Arnaud LE HORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+#  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+#  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+#  Except as contained in this notice, the name of Arnaud LE HORS shall not be
+#  used in advertising or otherwise to promote the sale, use or other dealings
+#  in this Software without prior written authorization from Arnaud LE HORS.
+#
+
+#
+# XPM Makefile - Arnaud LE HORS
+#
+
+VER=4.2.0
+MAJVER=4
+
+prefix=/usr
+incpath=$(prefix)/include/noX
+incxpath=$(incdir)/X11
+libpath=$(prefix)/lib/noX
+binpath=$(prefix)/bin
+manpath=$(prefix)/share/man
+man1path=$(manpath)/man1
+
+DEFINES=
+DEFINESNOX = -DXPM_NO_X 
+DEFINESX = 
+
+CC = gcc
+RM = rm -f
+# on sysV, define this as cp.
+INSTALL = install -c
+EXE=.exe
+
+CDEBUGFLAGS= -O
+
+INCLUDES= -I..
+INCLUDESNOX=
+INCLUDESX= -I/usr/X11R6/include
+
+OBJS= cxpm.o
+OBJSNOX= cxpm.nox.o
+
+CFLAGS= $(CDEBUGFLAGS) $(INCLUDES) $(DEFINES)
+CFLAGSNOX= $(CFLAGS) $(INCLUDESNOX) $(DEFINESNOX)
+CFLAGSX= $(CFLAGS) $(INCLUDESX) $(DEFINESX)
+
+all: cxpm-noX$(EXE) cxpm$(EXE)
+
+clean: 
+	$(RM) *.o cxpm$(EXE) cxpm-noX$(EXE)
+
+cxpm.o: cxpm.c
+	$(CC) $(CFLAGSX) -o $@ -c $<
+
+cxpm$(EXE): cxpm.o
+	$(CC) $(CFLAGSX) $< -o $@
+
+cxpm.nox.o: cxpm.c
+	$(CC) $(CFLAGSNOX) -o $@ -c $<
+
+cxpm-noX$(EXE): cxpm.nox.o
+	$(CC) $(CFLAGSNOX) $< -o $@ -lgdi32 -luser32
+
+install: install.prog install.man
+
+install.prog: cxpm-noX$(EXE) cxpm$(EXE)
+	-@if [ ! -d $(binpath) ]; then mkdir -p $(binpath); fi   
+	$(INSTALL) -s -m 0755 cxpm-noX$(EXE) $(binpath)/cxpm$(EXE)
+	$(INSTALL) -s -m 0755 cxpm$(EXE) $(binpath)/cxpm-X$(EXE)
+
+install.man:
+	-@if [ ! -d $(man1path) ]; then mkdir -p $(man1path); fi   
+	$(INSTALL) -m 0644 cxpm.man $(man1path)/cxpm.1
+
+# Other dependencies.
+cxpm.o: ../lib/XpmI.h ../lib/data.c ../lib/parse.c ../lib/RdFToI.c \
+  ../lib/hashtab.c ../lib/misc.c ../lib/Attrib.c ../lib/Image.c \
+  ../lib/simx.c ../lib/rgb.c

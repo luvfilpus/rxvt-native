@@ -1,0 +1,21 @@
+This is my half-assed port to cygwin64. I'm not a programmer, just addicted to rxvt. 
+
+This repo was created after using the cygport program to prep/configure the source.
+
+If this ever works, I will create a proper cygport package which includes the changes,
+I promise, but is not worth the hassle at this point.
+
+The main change, done by me, is changing the cygwin path conversion function call due
+to the fact that the function used in the 32bit cygwin is deprecated and not included
+in the 64bit libraries. 
+
+The part that I'm thus far too stupid to figure out is an undefined reference to 
+XDeleteProperty. Since the output of this code will run properly under cygwin X but 
+will not exec the shell in native mode, I suspect that the XDeleteProperty problem
+is related.
+
+I've updated autoconf's config.[guess,sub] so that they will work with cygwin64 and
+made some changes to the Makefiles (but not Makefile.in, yet) so the make will proceed 
+without errors.
+
+As always, YMMV...

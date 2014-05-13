@@ -1,0 +1,75 @@
+# rclock/rconf/Makefile.in	-*- Makefile -*-
+@MCOMMON@
+
+srcdir =	@srcdir@
+VPATH =		@srcdir@
+.PATH:		@srcdir@
+
+basedir = ../..
+thisdir = rclock/rconf
+
+first_rule: rconf
+dummy:
+
+subdirs = 
+
+SRCS =	dialogs.c edit.c list.c rconf.c
+OBJS =	dialogs.o edit.o list.o rconf.o
+HDRS =	RConf_ad.h dialogs.h edit.h list.h rconf.h
+
+#
+# Distribution variables
+#
+
+DIST = $(HDRS) $(SRCS) Makefile.in RConf.ad rconf.gif rconf.html
+
+# inference rules
+.c.o:
+	$(CC) -c $(CPPFLAGS) $(XINC) -I. -I$(basedir) -I$(srcdir) $(DEFS) $(CFLAGS) $<
+#-------------------------------------------------------------------------
+all:
+
+rconf: $(OBJS)
+	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS) $(XLIB) -lXaw
+
+tags: $(SRCS)
+	ctags $(SRCS)
+
+allbin: rconf
+
+alldoc:	
+
+clean:
+	$(RMF) rconf core a.out *.o *.bak *~
+
+realclean: clean
+	$(RMF) tags
+
+cleandir: realclean
+
+distclean:
+	(cd $(srcdir); $(RMF) rconf *~ *.o core a.out)
+	if test $(srcdir) = .; then $(MAKE) realclean; fi
+	@for I in $(subdirs); do (cd $$I; $(MAKE) $@) || exit 1; done
+	(cd $(srcdir); $(RMF) Makefile)
+
+install: allbin alldoc
+	$(INSTALL_PROGRAM) rconf $(DESTDIR)$(bindir)/$(binprefix)rconf
+
+uninstall:
+	cd $(bindir); $(RMF) $(binprefix)rconf
+
+distdirs:
+	mkdir $(basedir)/../$(VERNAME)/$(thisdir)
+	@for I in $(subdirs); do (cd $$I; $(MAKE) $@ || (echo "Failed to make distclean in $$I"; exit 0) ); done
+
+distcopy: 
+	$(CP) -p $(DIST) $(basedir)/../$(VERNAME)/$(thisdir)
+	@for I in $(subdirs); do (cd $$I; $(MAKE) $@) || exit 1; done
+
+# -----------------------------------------------------------------------
+# DO NOT DELETE: ugly dependency list follows
+list.o : list.h
+dialogs.o : dialogs.h
+edit.o : edit.h
+rconf.o : list.h dialogs.h edit.h rconf.h RConf_ad.h

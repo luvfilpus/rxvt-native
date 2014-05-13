@@ -1,0 +1,10 @@
+This is simply a copy of xpm-nox-4.2.0 from the 
+cygwin distribution.  We need a static library, 
+compiled as NO_X, BUT we can't include simx.o 
+in the library, because it contains symbols that
+would clash with libWll.
+
+Therefore, we don't use /usr/lib/noX/* or /usr/include/noX/
+but instead roll-our-own library and link it in statically to
+rxvt.
+

@@ -1,0 +1,11 @@
+category: Shells
+sdesc: "VT102 terminal emulator for both X and Windows"
+ldesc: "rxvt is a colour vt102 terminal emulator intended as
+an xterm replacement for users who do not require features 
+such as Tektronix 4014 emulation and toolkit-style configurability.
+As a result, rxvt uses much less memory.  And besides, it's 
+prettier than xterm and much more usable than cmd.exe on MSWin.
+There are, however, known issues with native windows stdio; on
+windows/cygwin, rxvt is best used when you are using mostly 
+cygwin tools."
+requires: cygwin bash coreutils cygutils diffutils run
